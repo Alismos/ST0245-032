@@ -6,9 +6,9 @@
  */
 public class Date
 {
-    short dia, mes;
-    int año;
-    public Date(short dia, short mes, int año)
+    byte dia, mes;
+    short año;
+    public Date(byte dia, byte mes, short año)
     {
         this.dia=dia;
         this.mes=mes;
@@ -19,15 +19,15 @@ public class Date
         return "La fecha es: "+dia+"/"+mes+"/"+año;   
     }
 
-    public short dia(){
+    public byte dia(){
         return dia;   
     }
 
-    public short mes(){
+    public byte mes(){
         return mes;   
     }
 
-    public int año(){
+    public short año(){
         return año;
     }
 
