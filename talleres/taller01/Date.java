@@ -6,8 +6,8 @@
  */
 public class Date
 {
-    byte dia, mes;
-    short año;
+    private byte dia, mes;
+    private short año;
     public Date(byte dia, byte mes, short año)
     {
         this.dia=dia;
