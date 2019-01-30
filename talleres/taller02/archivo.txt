@@ -1,1 +1,52 @@
-.
+/**
+ *La clase taller dos tiene como objetivo dar solución
+ *a 3 problemas recursivos
+ *
+ *@Duvan Ramirez, Santiago Sr
+ *@version 1
+ */
+
+public class Taller2 {
+
+    public static int gcd(int p, int q){
+        
+        if(q==0){
+            return p;
+        }
+        else{
+            return gcd(q,p%q);
+        }
+    }
+
+    public static boolean SumaGrupo(int start, int[] nums, int target) {
+
+        if(start==nums.length)
+            if(target==0)
+                return true;
+            else
+                return false;
+
+        return SumaGrupo(start+1,nums,target)|| SumaGrupo(start+1,nums,target-nums[start]);
+
+    }
+
+   
+    public static void combinations(String s) { 
+        combinationsAux("", s); 
+    }
+
+    
+
+    private static void combinationsAux(String prefix, String s) {  
+        if(s.length()==0){
+            System.out.println(prefix);
+        }
+        else{
+
+            combinationsAux(prefix + s.charAt(0), s.substring(1));
+            combinationsAux(prefix, s.substring(1));
+        }
+
+    }
+
+}
