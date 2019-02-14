@@ -1,3 +1,4 @@
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 /** 
  * @Duvan Ramirez & Santiago Santacruz
@@ -5,12 +6,12 @@ import java.util.concurrent.TimeUnit;
 public class Taller4
 {
 
-    public static void main(String[] args){
+    public static void TiempoParaArray(String[] args){
         for(int i = 1; i <= 20; i++)
-            ArrayTemp(new int[i]);
+            RecorrerArray(new int[i]);
     }
 
-    private static int ArrayTemp(int[] a){
+    public static int RecorrerArray(int[] a){
         long start = System.currentTimeMillis();
         int s = Array(a,0);
         long tiempo =  System.currentTimeMillis() - start;
@@ -35,7 +36,7 @@ public class Taller4
         return i <= 1 ? i : f(i-1)+f(i-2);
     }
 
-    public static void complejidadPunto1(){
+    public static void complejidadArray(){
         for(int i = 18; i <= 38; i++){
             long start = System.currentTimeMillis();
             f(i);
@@ -45,9 +46,11 @@ public class Taller4
     }
 
     public static void TiempoParaSumaVolumenes(){
-        for(int i = 1; i <= 20; i++){
-            int a [] = {i,i+1,i+2,i+3,i+4};
-            SumaVolumenes(a, i);
+        int[] array = new int[20];
+        Random generator = new Random();
+        for (int i =0; i<20; i++){
+            array[i] = generator.nextInt(100);
+            SumaVolumenes(array, 0);
         }
     }
 
@@ -59,6 +62,19 @@ public class Taller4
         return temp;
     }
 
+    private static boolean SumaVolumenesP(int start, int[] nums, int target) {
+        try{
+            TimeUnit.SECONDS.sleep(1);
+        }
+        catch (Exception e){  
+        }
+        if(start == nums.length)
+            return target == 0;
+        return SumaVolumenesP(start+1, nums, target) || SumaVolumenesP(start+1, nums, target-nums[start]);
+
+    }
+
+}
     private static boolean SumaVolumenesP(int start, int[] nums, int target) {
         try{
             TimeUnit.SECONDS.sleep(1);
