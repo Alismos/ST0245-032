@@ -1,0 +1,74 @@
+import java.util.concurrent.TimeUnit;
+/** 
+ * @Duvan Ramirez & Santiago Santacruz
+ */
+public class Taller4
+{
+
+    public static void main(String[] args){
+        for(int i = 1; i <= 20; i++)
+            ArrayTemp(new int[i]);
+    }
+
+    private static int ArrayTemp(int[] a){
+        long start = System.currentTimeMillis();
+        int s = Array(a,0);
+        long tiempo =  System.currentTimeMillis() - start;
+        System.out.println(tiempo);
+        return s;
+    }
+
+    // Operaciones que realiza T(n) = cn + c1
+    private static int Array(int[] a,int i){  
+        try{
+            TimeUnit.SECONDS.sleep(1);
+        }
+        catch (Exception e){  
+        }
+        if (i == a.length) // C1
+            return 0;  // C2
+        else
+            return a[i] + Array(a, i+1); // C3 + T(n-1) 
+    }
+
+    private static int f(int i){
+        return i <= 1 ? i : f(i-1)+f(i-2);
+    }
+
+    public static void complejidadPunto1(){
+        for(int i = 18; i <= 38; i++){
+            long start = System.currentTimeMillis();
+            f(i);
+            long tiempo =  System.currentTimeMillis() - start;
+            System.out.println(tiempo);
+        }
+    }
+
+    public static void TiempoParaSumaVolumenes(){
+        for(int i = 1; i <= 20; i++){
+            int a [] = {i,i+1,i+2,i+3,i+4};
+            SumaVolumenes(a, i);
+        }
+    }
+
+    public static boolean SumaVolumenes(int[] a, int target){
+        long start = System.currentTimeMillis();
+        boolean temp = SumaVolumenesP(0,a,target);
+        long tiempo =  System.currentTimeMillis() - start;
+        System.out.println(tiempo);
+        return temp;
+    }
+
+    private static boolean SumaVolumenesP(int start, int[] nums, int target) {
+        try{
+            TimeUnit.SECONDS.sleep(1);
+        }
+        catch (Exception e){  
+        }
+        if(start == nums.length)
+            return target == 0;
+        return SumaVolumenesP(start+1, nums, target) || SumaVolumenesP(start+1, nums, target-nums[start]);
+
+    }
+
+}
