@@ -40,13 +40,16 @@ public class galler5
     * 
     */
     public static void insertionSort(int[] a){
-        for (int i=1; i < a.length; i++) {
-            int temp = a[i];
-            int o;
-            for (o=i-1; o >=0 && a[o] > temp; o--){
-                a[o+1] = a[o];
+        for (int i=1; i < a.length; i++) {              //C1 * n
+            int temp = a[i];                            //C2
+            int o;                                      //C3
+            for (o=i-1; o >=0 && a[o] > temp; o--){     //n * n
+                a[o+1] = a[o];                          //C4
             }
-            a[o+1] = temp;
+            a[o+1] = temp;                              //C5
+            // T(n) = C1 * n + C2 + C3 + n * n + C4 + C5
+            // T(n) = n*n
+            // T(n) = n²
         }
     }
 
