@@ -49,7 +49,7 @@ public class galler5
             a[o+1] = temp;                              //C5
             // T(n) = C1 * n + C2 + C3 + n * n + C4 + C5
             // T(n) = n*n
-            // T(n) = n²
+            // T(n)=O(n^2)
         }
     }
 
