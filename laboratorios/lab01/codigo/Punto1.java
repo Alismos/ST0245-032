@@ -6,10 +6,10 @@
 */
 public class Punto1
 {
-    private static int Puerto(int a){ 		//C1
-        if(a<=2)     			              	//C2
-            return a;				              //C3
-        return Puerto(a-1)+Puerto(a-2);		//C4 + (n-1)(n-2)
+    private static int Puerto(int a){ 		        //C1
+        if(a<=2)     			              	    //C2
+            return a;				                //C3
+        return Puerto(a-1)+Puerto(a-2);		        //C4 + (n-1)(n-2)
     }					   	                        // 1 + n + n
 
     public static void main(String [] args){
