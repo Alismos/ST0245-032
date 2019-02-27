@@ -2,8 +2,12 @@
 /**
  * Write a description of class practica here.
  * 
- * @author (your name) 
+ * @author Santiago Santacruz Duvan Andres Ramirez
+ * 
  * @version (a version number or a date)
+ *respuesta b) si permitiria que esta sea usada en un editor de texto, ya que cuando este este lleno se agregaria mas espacios de 
+ *memoria para que se pueda continuar añadiendo valores
+ *respuesta c) la complejidad de agregar n caracteres en el peor de los casos seria de 0(n)
  */
 public class MiArrayList {
     private int size;
