@@ -2,12 +2,12 @@
 /**
  * Write a description of class practica here.
  * 
- * @author Santiago Santacruz Duvan Andres Ramirez
+ * @author Santiago Santacruz Duvan Saavedra
  * 
  * @version (a version number or a date)
  *respuesta b) si permitiria que esta sea usada en un editor de texto, ya que cuando este este lleno se agregaria mas espacios de 
- *memoria para que se pueda continuar añadiendo valores
- *respuesta c) la complejidad de agregar n caracteres en el peor de los casos seria de 0(n)
+ *memoria para que se pueda continuar añadiendo valores.
+ *respuesta c) la complejidad de agregar n caracteres en el peor de los casos seria de O(n)
  */
 public class MiArrayList {
     private int size;
@@ -50,7 +50,7 @@ public class MiArrayList {
         ampliar();
     }    
 
-    public void ampliar()    {
+    private void ampliar()    {
         suma *= 2;
         int [] ar = new int[suma];
         for(int i = 0; i < elements.length; i++){
@@ -78,9 +78,9 @@ public class MiArrayList {
      * Agrega un elemento e en la posición index de la lista
      *
      */
-    public void add(int index, int e) {
-        if(index < 0 && index > elements.length-1)
-            throw new ArrayIndexOutOfBoundsException("perdon usuario, pero index= " + index); 
+    public void add(int index, int e) throws ArrayIndexOutOfBoundsException {
+        if(index < 0 || index > elements.length-1)
+            throw new ArrayIndexOutOfBoundsException("perdon usuario, pero index " + index + " no existe."); 
         int vari = 0, temp;
         vari =elements[index];
         elements[index]=e; 
@@ -91,18 +91,20 @@ public class MiArrayList {
            vari = temp;
     
         }
-        size+=1;
+        size +=1;
+        if(size==elements.length)
+        ampliar();
     } 
 
     /**
-     * @param index es la posicion en la cual se va agregar el elemento
+     * @param index es la posicion en la cual se va a eliminar el elemento
      *
      * ELimina el elemento  en la posición index de la lista
      *
      */
-    public void del(int index){
-        if(index < 0 && index > elements.length-1)
-            throw new ArrayIndexOutOfBoundsException("perdon usuario, pero index= " + index);
+    public void del(int index) throws ArrayIndexOutOfBoundsException{
+        if(index < 0 || index > elements.length-1)
+            throw new ArrayIndexOutOfBoundsException("perdon usuario, pero index " + index + " no existe");
 
         for(int i = index; i <= elements.length-2; i++){
            //int x= i-1;
