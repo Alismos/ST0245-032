@@ -6,7 +6,7 @@
  * 
  * @version (a version number or a date)
  *respuesta b) si permitiria que esta sea usada en un editor de texto, ya que cuando este este lleno se agregaria mas espacios de 
- *memoria para que se pueda continuar añadiendo valores.
+ *memoria para que se pueda continuar añadiendo valores, pero llegaria un punto en que se volveria lento el programa, serviria para cosas pequeñas.
  *respuesta c) la complejidad de agregar n caracteres en el peor de los casos seria de O(n)
  */
 public class MiArrayList {
