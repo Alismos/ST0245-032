@@ -1,4 +1,3 @@
-
 package Laboratorio_2;
 
 import java.util.Random;
@@ -6,24 +5,6 @@ import java.util.Arrays;
 
 public class Code_source
 {
-  // Computer the sum of an array
-  public static int ArraySum(int[] A)
-  {          
-      int sum = 0;
-      for (int i = 0; i < A.length; i++)
-         sum = sum + A[i];
-      return sum;
-  }
-  
-  // Computes the maximum value of an array
-  public static int ArrayMax(int[] A)
-  {
-      int max = A[0];
-      for (int i = 0; i < A.length; i++)
-         if (A[i] > max)
-           max = A[i];
-      return max;
-  }
   
   // Sorts an array using Insertion Sort
   public static void InsertionSort(int[] A)
@@ -46,7 +27,7 @@ public class Code_source
   public static int[] CrearArray(){
       
       Random generator = new Random();
-      int num = (int) (Math.random() * 1200000) + 400000;
+      int num = (int) (Math.random() * 120000) + 40000;
       
       int[] array = new int[num];
         
@@ -109,27 +90,22 @@ public class Code_source
       
       int [] X = CrearArray();
       int [] Y = CrearArray();
-      
-      int [][] XY = {X,Y}; 
+       inicioIs = System.currentTimeMillis();
+      Code_source.InsertionSort(X);
+      finalIs = System.currentTimeMillis();
+      tIs = (finalIs - inicioIs);
+      System.out.println( tIs);
       inicioMs = System.currentTimeMillis(); 
       Code_source.mergeSort(X);
       finalMs = System.currentTimeMillis();
-      
-      inicioIs = System.currentTimeMillis();
-      Code_source.InsertionSort(X);
-      finalIs = System.currentTimeMillis();
-      
       tMs = (finalMs - inicioMs);
+      System.out.println( tMs);
       
-      tIs = (finalIs - inicioIs);
       
-      //System.out.println("Tiempo Merge sort : " + tMs + "\n" + "Tiempo Insert sort : " + tIs);
-      System.out.println(X.length * Y.length);
-      System.out.println();
-      System.out.println( tMs + "\n" + tIs);
+      
+      //System.out.println(X.length);
       }
-      //System.out.println(Code_source.ArraySum(X) + " " + Code_source.ArrayMax(X) + "\n" );      
-      //}
+      
   }
   
 }
