@@ -208,5 +208,25 @@ public int maxSpan(int[] nums) {
     return nums;
 }
 
+public boolean linearIn(int[] outer, int[] inner) {
+  if(inner.length == 0) {
+			return true;
+		}
+		int encontado = 0;
+		int x = 0;
+		for(int i = 0; i < outer.length; i++) {
+			if(outer[i] == inner[x]) {
+				encontrado++;
+				x++;
+			} else if(outer[i] > inner[x]) {
+				return false;
+			}
+			if(numberFound == inner.length) {
+				return true;
+			}
+		}
+		return false;
+	}
+}
 
 }
