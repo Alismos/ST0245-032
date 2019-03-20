@@ -1,9 +1,7 @@
 
 /**
- * Write a description of class Main here.
- *
- * @author (your name)
- * @version (a version number or a date)
+ * Santiago Santacruz R && Duvan Andres Ramirez
+ * 20/03/2019
  */
 
 import java.util.Stack;
