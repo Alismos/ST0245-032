@@ -1,15 +1,15 @@
 
 /**
- * Write a description of class Punto2b here.
+ * Write a description of class Punto2a here.
  *
- * @author (your name)
+ * Santiago Santacruz && Duvan Andres Ramirez
  * @version (a version number or a date)
  */
 import java.util.LinkedList;
 
-public class Punto2b
+public class Punto2a
 {
-     public static void Punto2b(String texto){
+     public static void Punto2a(String texto){
 
         LinkedList <String> machine = new LinkedList();
         String beg = "";
