@@ -7,7 +7,7 @@ import java.util.StringTokenizer;
 /**
  * @author: Duvan Ramírez && Santiago Santacruz
  */
-public class Main {
+public class Brazo_robotico {
     public static int NumeroDeBloques;
     public static Stack <Integer> Bloques[];
     public static int Pos[];
