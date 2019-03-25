@@ -26,9 +26,6 @@ public class Main {
             Bloques[i].push(i);
             Pos[i] = i;
         }
-        //for(int i = 0; i < NumberBloques; i++) {
-            
-        //}
         
         Exit = "";
         System.out.println("Recuerde que si desea salir debe presionar 'quit'");
