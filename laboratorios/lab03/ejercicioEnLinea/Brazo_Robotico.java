@@ -5,7 +5,6 @@ import java.util.Stack;
 import java.util.StringTokenizer;
 
 /**
- *
  * @author: Duvan Ramírez && Santiago Santacruz
  */
 public class Main {
