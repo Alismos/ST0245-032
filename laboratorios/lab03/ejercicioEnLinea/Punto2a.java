@@ -1,9 +1,8 @@
 
 /**
- * Write a description of class Punto2a here.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Duvan Ramirez && Santiago Santacruz
+ * @version (0.0)
  */
 import java.util.LinkedList;
 
