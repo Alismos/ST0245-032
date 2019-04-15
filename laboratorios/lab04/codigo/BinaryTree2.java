@@ -2,8 +2,7 @@
 /**
  * Write a description of class BinaryTree2 here.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Santiago Santacruz && Duvan Andres Ramirez
  */
 
 import java.util.*;
