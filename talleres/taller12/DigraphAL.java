@@ -67,43 +67,40 @@ public class DigraphAL extends Digraph {
         return total;
     }
 
-    public boolean hayCaminoDFS(Digraph g, int origen, int destino){
-        boolean [] visitados = new boolean [g.size()];
-        return hayCaminoAuxDFS(g, origen, destino, visitados);
+   public boolean hayCaminoDFS( int origen, int destino){
+        boolean [] visitados = new boolean [grafoConListas.size()];
+        return hayCaminoAuxDFS(origen, destino, visitados);
     }
 
-    private boolean hayCaminoAuxDFS(Digraph g, int origen, int destino, boolean[] visitados){
+    private boolean hayCaminoAuxDFS( int origen, int destino, boolean[] visitados){
         visitados[origen] = true;
         boolean respuesta = false;
-        
-        ArrayList<Integer> vecinos = g.getSuccessors(origen);
-        
+
+        ArrayList<Integer> vecinos = getSuccessors(origen);
+
         if(destino == origen){
             respuesta = true;
         }
 
         for(int vecino: vecinos){
             if(visitados[vecino] == false){
-                respuesta = respuesta || hayCaminoAuxDFS(g, vecino, destino, visitados);
+                respuesta = respuesta || hayCaminoAuxDFS(vecino, destino, visitados);
             }
         }
         return respuesta;
     }
 
-    public boolean hayCamino2(Digraph g, int origen, int destino){
+    public boolean hayCamino2BFS(int origen, int destino){
         Queue<Integer> q = new LinkedList<>(); 
-        ArrayList<Integer> vecinos = g.getSuccessors(origen);
-        while(!vecinos.isEmpty()){
+        ArrayList<Integer> vecinos = getSuccessors(origen);
+        q.add(origen);
+        while(!q.isEmpty()){
             int help = q.remove();
             if(help== destino){
                 return true;
             }
-
-            if(vecinos.contains(help)){
-                continue;
-            }
             vecinos.add(help);
-            for(Integer help2: q){
+            for(Integer help2: getSuccessors(help)){
                 q.add(help2);
             }
         }
