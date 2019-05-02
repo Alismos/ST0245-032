@@ -8,7 +8,7 @@ public class lectura{
 
     public static void main (String [] args)throws FileNotFoundException, IOException{
     	
-    	System.out.println(lectura().toString());
+    	lectura();
     }
 
     /*Metodo para la lectura y ordenamiento del archivo*/
