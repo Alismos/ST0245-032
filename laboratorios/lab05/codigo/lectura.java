@@ -28,7 +28,7 @@ public class lectura{
 
     public sucessors lectura() throws FileNotFoundException, IOException{
 
-        BufferedReader Lec = new BufferedReader (new FileReader ("D:/Alismos/Documentos/Eafit/Segundo semestre/Estructuras de datos/Laboratorios/Laboratorio 5/medellin_colombia-grande.txt"));
+        BufferedReader Lec = new BufferedReader (new FileReader ("medellin_colombia-grande.txt"));
         sucessors struct = new sucessors();
 
         String Lec1; Lec.readLine();
