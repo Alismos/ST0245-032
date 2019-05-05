@@ -10,7 +10,7 @@ import java.util.HashMap;
 
 /**
  * 
- * @Duvan Ramírez && Santiago Santacruz
+ * @author Duvan Ramírez && Santiago Santacruz
  * @version (0.0)
  */
 
