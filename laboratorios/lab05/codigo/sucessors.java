@@ -2,10 +2,9 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import javafx.util.Pair;
 /**
- * Write a description of class Sucessors here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @Duvan Ramírez && Santiago Santacruz
+ * @version (0.0)
  */
 public class sucessors
 {
