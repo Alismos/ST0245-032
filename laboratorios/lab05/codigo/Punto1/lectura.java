@@ -8,6 +8,12 @@ import java.util.LinkedList;
 import javafx.util.Pair;
 import java.util.HashMap;
 
+/**
+ * 
+ * @Duvan Ramírez && Santiago Santacruz
+ * @version (0.0)
+ */
+
 public class lectura{
 
      LinkedList <String> ub;
