@@ -3,7 +3,7 @@ import java.util.LinkedList;
 import javafx.util.Pair;
 /**
  * 
- * @Duvan Ramírez && Santiago Santacruz
+ * @author Duvan Ramírez && Santiago Santacruz
  * @version (0.0)
  */
 public class sucessors
