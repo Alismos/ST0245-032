@@ -18,8 +18,8 @@ public class LecturaArchivo
     int sideX;
     int sideY;
     int sideZ;
-    public LecturaArchivo(String archivo){
-        this.archivo=archivo;
+    public LecturaArchivo(){
+
     }
 
     public static void muestraContenido(String archivo)throws FileNotFoundException, IOException {
@@ -81,7 +81,7 @@ public class LecturaArchivo
             int cuadrantY = (int)(data.getY()*111111);
             int cuadrantZ = (int)(data.getZ());
             int cuadrant=getCuadrant(cuadrantX,cuadrantY,cuadrantZ);
-            System.out.println(cuadrant);
+
             if(!hash.containsKey(cuadrant)){
 
                 hash.put(cuadrant,new LinkedList<Bees>());
@@ -110,17 +110,10 @@ public class LecturaArchivo
             if(entry.getValue().size() > 1){
                 for(int i = 0; i<entry.getValue().size(); i++){ //intentar hacer cin for each
                     System.out.println("Coliciona Abeja con Coordenadas X,Y,Z: "+ entry.getValue().get(i).getX() + 
-                    ", " + entry.getValue().get(i).getY() + ", "+ entry.getValue().get(i).getZ() );
+                        ", " + entry.getValue().get(i).getY() + ", "+ entry.getValue().get(i).getZ() );
                 }
             }
         }       
     }
 
-    public void main(String[]args)throws FileNotFoundException, IOException{
-        LecturaArchivo a = new LecturaArchivo("Abejas100.txt");
-        a.arrayListDeDatos("Abejas100.txt");
-        a.getSides();
-        a.putBeesOnHash();
-        a.CuadrantCollisions();
-    }
 }
