@@ -1,7 +1,4 @@
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.*;
 
 public class LecturaArchivo
@@ -9,15 +6,18 @@ public class LecturaArchivo
     private String archivo;
     LinkedList<Bees> data = new LinkedList<>();
     HashMap<Integer, LinkedList<Bees>> hash = new HashMap<Integer, LinkedList<Bees>>();
-    double maxX;
-    double maxY;
-    double maxZ;
-    double minX;
-    double minY;
-    double minZ;
-    int sideX;
-    int sideY;
-    int sideZ;
+    LinkedList<Bees> AbejasCol = new LinkedList<Bees>();
+    private double maxX;
+    private double maxY;
+    private double maxZ;
+    private double minX;
+    private double minY;
+    private double minZ;
+    private int sideX;
+    private int sideY;
+    private int sideZ;
+    private int side = (int)(100/Math.sqrt(3));
+    private int rangoCol = 100;
     public LecturaArchivo(){
 
     }
@@ -71,7 +71,7 @@ public class LecturaArchivo
         return data;
     }   
 
-    /*
+    /**
      * creacion del hashMap
      */
     public HashMap putBeesOnHash(){
@@ -83,7 +83,6 @@ public class LecturaArchivo
             int cuadrant=getCuadrant(cuadrantX,cuadrantY,cuadrantZ);
 
             if(!hash.containsKey(cuadrant)){
-
                 hash.put(cuadrant,new LinkedList<Bees>());
                 hash.get(cuadrant).add(data);
             }else if(hash.containsKey(cuadrant)){
@@ -94,7 +93,6 @@ public class LecturaArchivo
     }
 
     public int getCuadrant(int x,int y, int z){
-        int side = (int)(100/Math.sqrt(3));
         int aiuda = (int)((int)(x/side)+((int)(y/side)*(int)(sideX/side))+((int)(z/side)*(int)(sideX/side)*(int)(sideY/side)));
         return aiuda;
     }
@@ -109,11 +107,100 @@ public class LecturaArchivo
         for(Map.Entry<Integer, LinkedList<Bees>> entry : hash.entrySet()){
             if(entry.getValue().size() > 1){
                 for(int i = 0; i<entry.getValue().size(); i++){ //intentar hacer cin for each
-                    System.out.println("Coliciona Abeja con Coordenadas X,Y,Z: "+ entry.getValue().get(i).getX() + 
-                        ", " + entry.getValue().get(i).getY() + ", "+ entry.getValue().get(i).getZ() );
+                    AbejasCol.add(entry.getValue().get(i));
                 }
             }
         }       
     }
 
+    public void AbejasSolitas(){
+        int my = (int)(sideX/side);
+        int mz = (int) ((sideX/side)*(sideY/side));
+        for(Map.Entry<Integer, LinkedList<Bees>> entry : hash.entrySet()){
+            if(entry.getValue().size() ==1){
+                Bees pedro = entry.getValue().get(0);
+                int cuadrante = getCuadrant((int)pedro.getX(), (int)pedro.getY(), (int)pedro.getZ());
+                if(!Vecinos(cuadrante+1,pedro)){
+                    if(!Vecinos(cuadrante-1,pedro)){
+                        if(!Vecinos(cuadrante-my,pedro)){
+                            if(!Vecinos(cuadrante+my,pedro)){
+                                if(!Vecinos(cuadrante-mz,pedro)){
+                                    if(!Vecinos(cuadrante+mz,pedro)){
+                                        if(!Vecinos((cuadrante+1)+my,pedro)){
+                                            if(!Vecinos((cuadrante+1)-my,pedro)){
+                                                if(!Vecinos((cuadrante-1)+my,pedro)){
+                                                    if(!Vecinos((cuadrante-1)-my,pedro)){
+                                                        if(!Vecinos((cuadrante+1)+mz,pedro)){
+                                                            if(!Vecinos((cuadrante+1)-mz,pedro)){
+                                                                if(!Vecinos((cuadrante-1)+mz,pedro)){
+                                                                    if(!Vecinos((cuadrante-1)-mz,pedro)){
+                                                                        if(!Vecinos((cuadrante+my)+mz,pedro)){
+                                                                            if(!Vecinos((cuadrante+my)-mz,pedro)){
+                                                                                if(!Vecinos((cuadrante-my)+mz,pedro)){
+                                                                                    if(!Vecinos((cuadrante-my)-mz,pedro)){
+                                                                                        if(!Vecinos(((cuadrante+1)+my)+mz,pedro)){
+                                                                                            if(!Vecinos(((cuadrante+1)-my)+mz,pedro)){
+                                                                                                if(!Vecinos(((cuadrante+1)-my)-mz,pedro)){
+                                                                                                    if(!Vecinos(((cuadrante-1)+my)+mz,pedro)){
+                                                                                                        if(!Vecinos(((cuadrante-1)+my)-mz,pedro)){
+                                                                                                            if(!Vecinos(((cuadrante-1)-my)+mz,pedro)){
+                                                                                                                if(!Vecinos(((cuadrante-1)-my)-mz,pedro)){
+
+                                                                                                                }
+                                                                                                            }
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    }   
+                                                                                }   
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    public boolean Vecinos(int cua, Bees bee){
+        if(hash.get(cua) != null){
+            for(int j =0; j<hash.get(cua).size(); j++){
+                if((Math.abs(hash.get(cua).get(j).getX() - bee.getX())<= rangoCol) && 
+                (Math.abs(hash.get(cua).get(j).getY() - bee.getY())<= rangoCol) && 
+                (Math.abs(hash.get(cua).get(j).getZ() - bee.getZ())<= rangoCol)){
+                    AbejasCol.add(bee);
+                }
+            }
+        }
+
+        return false;
+    }
+
+    public  void writeFile(LinkedList<Bees> abejas)throws IOException{
+        File file = new File("AbejasEnRiesgo.txt");
+        file.createNewFile();
+        PrintWriter escritor = new PrintWriter (file);
+        if(AbejasCol.isEmpty()){
+            System.out.println("There are not bees that are in risk of Collision");
+        }else{
+
+            for(Bees juan: abejas){
+                escritor.println(juan.getX()+ "" + juan.getY() + ""+ juan.getZ());
+            }
+            escritor.close();
+        } 
+    }
 }
