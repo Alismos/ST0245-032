@@ -191,6 +191,9 @@ public class LecturaArchivo
 
     public  void writeFile(LinkedList<Bees> abejas)throws IOException{
         File file = new File("AbejasEnRiesgo.txt");
+        if(file.exists()){
+        file.delete();
+        }
         file.createNewFile();
         PrintWriter escritor = new PrintWriter (file);
         if(AbejasCol.isEmpty()){
