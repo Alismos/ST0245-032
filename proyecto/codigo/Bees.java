@@ -1,18 +1,21 @@
 
 /**
- * Write a description of class Bees here.
- *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Santiago Santacruz && Duvan Andres Ramirez
+ * @version 3
  */
-
-import java.util.LinkedList;
 public class Bees
 {
+    
+    /**
+     * Atributos de la clase abeja
+     */
     public double x,y,z;
     public int id;
     
-    public int Cell = 100;
+    
+    /**
+     * Constructor de la clase abeja
+     */
     public Bees(double x, double y,double z, int id)
     {
         this.x = x;
@@ -21,7 +24,9 @@ public class Bees
         this.id = id;
         
     }
-    
+    /**
+     * Getters de la clase abeja
+     */
     public double getX(){
     return x;
     }
@@ -33,16 +38,8 @@ public class Bees
     public double getZ(){
     return z;
     }
-    public LinkedList<Integer> quadrants(){
-    int xQ = (int)x;
-    int yQ = (int)y;
-    LinkedList <Integer> list = new LinkedList<Integer>();
-    return list;
-    }
     
-    
-    
-    public String toString(){
-    return id + " ";
+    public int getId(){
+        return id;
     }
 }
