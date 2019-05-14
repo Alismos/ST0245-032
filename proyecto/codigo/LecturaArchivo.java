@@ -1,8 +1,10 @@
 import java.io.*;
 import java.util.*;
-
 public class LecturaArchivo
 {
+    /**
+     * Atributos a utilizar
+     */
     private String archivo;
     LinkedList<Bees> data = new LinkedList<>();
     HashMap<Integer, LinkedList<Bees>> hash = new HashMap<Integer, LinkedList<Bees>>();
@@ -18,10 +20,16 @@ public class LecturaArchivo
     private int sideZ;
     private int side = (int)(100/Math.sqrt(3));
     private int rangoCol = 100;
+    
+    /**
+     * constructor de la clase LecturaArchivo
+     */
     public LecturaArchivo(){
-
     }
 
+    /**
+     * Metodo el cual nos muestra el contenido del archivo
+     */
     public static void muestraContenido(String archivo)throws FileNotFoundException, IOException {
         String cadena;
         FileReader f = new FileReader(archivo);
@@ -32,6 +40,11 @@ public class LecturaArchivo
         b.close();
     }
 
+    /**
+     * este metodo recorre el archivo que se va a usar, mientras que lo va leyendo crea una instancia de abejas y crea una abeja, compara si esta abeja tiene algun max y minimo
+     * para irlo guarando y desoues utilizarlo. 
+     * Estas abejas se van guardando en una Linked List de tipo Abeja.
+     */
     public LinkedList arrayListDeDatos(String archivo) throws FileNotFoundException, IOException{
         String cadena=null;
         String temp ="";
@@ -72,7 +85,7 @@ public class LecturaArchivo
     }   
 
     /**
-     * creacion del hashMap
+     * creacion del hashMap el cual tiene como key los cuadrantes y de valores una lista de abejas
      */
     public HashMap putBeesOnHash(){
 
@@ -92,17 +105,26 @@ public class LecturaArchivo
         return hash;
     }
 
+    /**
+     * con este metodo se obtiene el cuadrante el cual la abeja va a estar en el mapa
+     */
     public int getCuadrant(int x,int y, int z){
         int aiuda = (int)((int)(x/side)+((int)(y/side)*(int)(sideX/side))+((int)(z/side)*(int)(sideX/side)*(int)(sideY/side)));
         return aiuda;
     }
 
+    /**
+     * se obtiene el valor de los lados X,Y,Z.
+     */
     public void getSides(){
         sideX =(int)(maxX*111111-minX*111111);
         sideY = (int)(maxY*111111-minY*111111);
         sideZ = (int)(maxZ*111111-minZ*111111);
     }
 
+    /**
+     * Los cuadrantes que tengan mas de un valor en en el HashMap se iran guardando en una lista.
+     */
     public void CuadrantCollisions(){
         for(Map.Entry<Integer, LinkedList<Bees>> entry : hash.entrySet()){
             if(entry.getValue().size() > 1){
@@ -113,6 +135,9 @@ public class LecturaArchivo
         }       
     }
 
+    /**
+     * este metodo comprueba que las abejas que esten solas no se choquen con un cuadrante adyacente
+     */
     public void AbejasSolitas(){
         int my = (int)(sideX/side);
         int mz = (int) ((sideX/side)*(sideY/side));
@@ -175,6 +200,9 @@ public class LecturaArchivo
         }
     }
 
+    /**
+     * Este metodo comprueba la distancia que hay entre una abeja solitaria con las abejas que esten en un cuadrnate adyacente
+     */
     public boolean Vecinos(int cua, Bees bee){
         if(hash.get(cua) != null){
             for(int j =0; j<hash.get(cua).size(); j++){
@@ -188,20 +216,23 @@ public class LecturaArchivo
 
         return false;
     }
-
+    
+    /**
+     * este metodo escribe el archivo de la lista de las abejas que colisionan.
+     */
     public  void writeFile(LinkedList<Bees> abejas)throws IOException{
         File file = new File("AbejasEnRiesgo.txt");
         if(file.exists()){
-        file.delete();
+            file.delete();
         }
         file.createNewFile();
         PrintWriter escritor = new PrintWriter (file);
         if(AbejasCol.isEmpty()){
             System.out.println("There are not bees that are in risk of Collision");
         }else{
-
+            escritor.println("The bees that are in risk are the following: ");
             for(Bees juan: abejas){
-                escritor.println(juan.getX()+ "" + juan.getY() + ""+ juan.getZ());
+                escritor.println("The id of the bee is: " +juan.getId() +". With coordinates: "+ juan.getX()+ " " + juan.getY() + " "+ juan.getZ());
             }
             escritor.close();
         } 
